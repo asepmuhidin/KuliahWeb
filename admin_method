@@ -1,0 +1,31 @@
+ public function admin()
+        {
+                $this->load->library('table');
+
+                $template = array(
+                        'table_open' => '<table class="table table-bordered">',
+                        'thead_open' => '<thead class="thead-dark">',
+                );
+                $this->table->set_template($template);        
+                
+                $this->table->set_heading('ID', 'Judul', 'Slug','Isi Berita','Aksi');
+
+                $query = $this->db->query('SELECT * FROM news');
+                foreach ($query->result() as $row)
+                {
+                    $link_edit="<a class='btn btn-success btn-sm' 
+                                href='/news/edit/".$row->id."'>Edit</a>"; 
+                    $link_hapus="<a class='btn btn-danger btn-sm' 
+                                href='/news/hapus/".$row->id."'>Hapus</a>";             
+                    
+                    $this->table->add_row($row->id, $row->title,
+                           $row->slug,$row->text,$link_edit .' '. $link_hapus );
+                }
+                                
+                $data['table']=$this->table->generate();
+                $data['title']='Kelola Data Berita';
+
+                $this->load->view('template/header',$data);
+                $this->load->view('news/admin',$data);
+                $this->load->view('template/footer');
+        }
