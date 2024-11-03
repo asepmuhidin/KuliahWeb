@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Java Script</title>
+</head>
+<body>
+    <script>
+        student={
+            nim:"001",
+            nama:"Adi Aryanto",
+            email:"ardi@gmail.com",
+            nilai:80,
+            hobbies:['Main game','Futsal','Traveling'],
+            pasangan:{
+                nama:'Khansa',
+                umur:20,
+                asal:"Bogor"
+            }
+
+        }
+        document.write(`Nama : ${student["nama"]}<br>`); 
+        document.write(`Email : ${student.email}<br>`);
+        document.write(`Nama Pasangan : ${student.pasangan.nama}<br>`);
+        document.write(`Hoby : ${student.hobbies[1]}<br>`);
+        document.write(`Nilai : ${student.nilai}<br>`);
+        if(student.nilai>=50){
+            status="LULUS";
+        }else{
+            status="TIDAK LULUS";
+        }
+        document.write(`Status : ${status}<br>`);
+       
+        var na=student.nilai;
+
+        if(na>=80){
+            nh='A';
+        }else if(na>=70){
+            nh='B';
+        }else if(na>=50){
+            nh='C';
+        }else if(na>=30){
+            nh='D';
+        }else{
+            nh='E';
+        }
+        document.write(`Nilai Hurup : ${nh}<br>`);
+        document.write(
+            `<table border=1 cellpadding=10 cellspacing=0>
+                <tr>
+                    <td>Nama </td>
+                    <td>: </td>
+                    <td>${student.nama} </td>    
+                </tr>
+                <tr>
+                    <td>Email </td>
+                    <td>: </td>
+                    <td>${student.email} </td>    
+                </tr>
+                <tr>
+                    <td>Nilai  </td>
+                    <td>: </td>
+                    <td>${student.nilai} -  ${nh}/${status} </td>    
+                </tr>    
+            </table> `);
+
+    /*format for
+       for(init_awal;kondisi;increment/decrement){
+            stat_loop;
+       }     
+    */
+   for(let i=1;i<=5;i++){
+       document.write(`${i}<br>`); 
+   }
+
+   students=[
+    {nim:"01",nama:'Adi Aryanto',usia:21},
+    {nim:"02",nama:'Fikri Ramadhan',usia:20},
+    {nim:"03",nama:'Elsa Amara',usia:19},
+   ]
+   
+    document.write(`<table border=1 cellpadding=10 cellspacing=0>
+        <tr>
+            <th>NIM</th>
+            <th>Nama</th>
+            <th>Usia</th>
+        </tr>    
+        `);
+        
+        for(let i=0;i<=2;i++){
+            document.write('<tr>');
+                document.write(`<td>${students[i].nim}</td>`);
+                document.write(`<td>${students[i].nama}</td>`);
+                document.write(`<td>${students[i].usia}</td>`);
+            document.write('</tr>'); 
+        }
+
+    document.write(`</table>`);
+    </script>
+</body>
+</html>
